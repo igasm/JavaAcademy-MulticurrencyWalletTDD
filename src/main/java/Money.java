@@ -1,4 +1,4 @@
-public class Money {
+public class Money implements Expression{
 
     protected int amount;
 
@@ -26,8 +26,16 @@ public class Money {
         return new Money(amount * multiplier, currency);
     }
 
+    public Expression plus(Money addend){
+        return new Sum(this, addend);
+    }
+
+    public Money reduce(String to){
+        return this;
+    }
+
     public String currency(){
-        return currency;
+        return this.currency;
     }
 
     public String toString(){
